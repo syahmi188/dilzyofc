@@ -158,8 +158,8 @@
 <body>
   <canvas id="stars"></canvas>
   <div class="container">
-    <h2 id="product-name">Produk</h2>
-    <p id="product-desc">Deskripsi produk akan muncul di sini.</p>
+    <h2 id="product-name">Pembayaran</h2>
+    <p id="product-desc">Wajib Membawa Bukti Pembayaran</p>
     <p><strong>Pilih metode pembayaran:</strong></p>
     <div class="payment-option">
       <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhFGUE707IY8kQVOwZL99RIFJISIL2YbPOWiHuiFhx2dTNRArgrYhsxmvffkr06UuMmW_bH_jvz5Fwmu_2ulgwM3LZDNrk5ffAMdh2Idupas0uEpaasSyzx1vqelkojB0xM8e-3nsGVLdRGZniVPwjOlnwGY1g8pPl7SY6gLq0lMDft2Wv8X9RiVspg=s16000" alt="Dana" onclick="pilihPembayaran(this, 'Dana', '083139915604')">
@@ -241,18 +241,15 @@
       "key-driproot-7d": { nama: "Drip Root", harga: "Rp60.000", deskripsi: "ApkMod FreeFire" },
       "key-driproot-30d": { nama: "Drip Root", harga: "Rp150.000", deskripsi: "ApkMod FreeFire" }
     };
-
-    const params = new URLSearchParams(location.search);
-    const produk = params.get("produk");
+const params = new URLSearchParams(location.search);
+    const pembayaran = params.get("Pembayaran");
     let selectedMethod = "";
     let selectedContact = "";
-    let currentProduct = null;
 
-    // Cek produk, kasih default kalau nggak ada
-    if (produk && produkInfo[produk]) {
-      currentProduct = produkInfo[produk];
-    } else {
-      currentProduct = { nama: "Produk Test", harga: "Rp0", deskripsi: "Silakan pilih produk lewat URL?produk=key-drip-1d" };
+    if (produkInfo[produk]) {
+      const p = produkInfo[produk];
+      document.getElementById("product-name").textContent = `${p.nama} - ${p.harga}`;
+      document.getElementById("product-desc").textContent = p.deskripsi;
     }
 
     document.getElementById("product-name").textContent = `${currentProduct.nama} - ${currentProduct.harga}`;
