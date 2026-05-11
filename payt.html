@@ -228,9 +228,9 @@ p {
     let selectedMethod = "";
     let selectedContact = "";
 
-    if (produkInfo[produk]) {
-      const p = produkInfo[produk];
-      document.getElementById("product-name").textContent = `${p.nama} - ${p.harga}`;
+    if (produkInfo) {
+      const p = produkInfo;
+      document.getElementById("product-name").textContent = `${nama} - ${harga}`;
       document.getElementById("product-desc").textContent = p.deskripsi;
     }
 
@@ -269,7 +269,10 @@ p {
       }
 
       const p = produkInfo;
-      const pesan = `Halo, saya telah melakukan pembayaran.\n\nProduk: ${p.nama}\nHarga: ${p.harga}\nPembayaran via: ${selectedMethod}`;
+      const pesan = `Halo, saya telah melakukan pembayaran.\n\n
+      Produk:
+      Harga: 
+      Pembayaran via: ${selectedMethod}`;
       const url = `https://wa.me/6283161976396?text=${encodeURIComponent(pesan)}`;
       window.location.href = url;
     }
